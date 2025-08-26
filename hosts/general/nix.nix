@@ -19,7 +19,7 @@
   settings = {
     trusted-users = [
       "root"
-      "ocfox"
+      "sign"
     ];
     substituters = [
       "https://cache.garnix.io"

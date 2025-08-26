@@ -1,17 +1,16 @@
 {
-  description = "ocfox's flake";
+  description = "sign's flake";
 
   outputs =
     inputs@{
       self,
       nixpkgs,
       haumea,
-      vaultix,
       flake-parts,
       ...
     }:
     let
-      username = "ocfox";
+      username = "sign";
       home = {
         default =
           { pkgs, ... }@args:
@@ -39,11 +38,6 @@
         "x86_64-linux"
         "aarch64-linux"
         "aarch64-darwin"
-      ];
-
-      imports = [
-        ./blog
-        inputs.vaultix.flakeModules.default
       ];
 
       perSystem =
@@ -99,23 +93,6 @@
             ;
         };
 
-        vaultix = {
-          identity = self + "/secrets/age-yubikey-identity-de5ab175.txt";
-          nodes =
-            let
-              inherit (inputs.nixpkgs.lib) filterAttrs elem;
-            in
-            filterAttrs (
-              n: _:
-              !elem n [
-                # "chi"
-                "whitefox"
-                "redfox"
-                "vulpes"
-              ]
-            ) self.nixosConfigurations;
-        };
-
         nixosModules = import ./modules;
       };
     };
@@ -127,7 +104,6 @@
     minegrub.url = "github:ocfox/minegrub-world-sel-theme";
     niri.url = "github:sodiboo/niri-flake";
     nixos-facter.url = "github:numtide/nixos-facter-modules";
-    vaultix.url = "github:milieuim/vaultix";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";

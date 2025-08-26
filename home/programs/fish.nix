@@ -15,9 +15,9 @@
   functions = {
     fish_greeting = "uname -a; w";
 
-    post = "curl -X PUT --data-binary @$argv https://pastb.in";
+    post = "curl -X PUT --data-binary @$argv https://pb.ocfox.me";
 
-    poststd = ''curl -X PUT --data-binary "@-" https://pastb.in'';
+    poststd = ''curl -X PUT --data-binary "@-" https://pb.ocfox.me'';
 
     ns = "nix shell nixpkgs#{ $argv }";
 

@@ -1,6 +1,6 @@
 {
   firewall.enable = false;
-  hostName = "brick";
+  hostName = "bin";
   useDHCP = false;
 
   networkmanager.enable = true;

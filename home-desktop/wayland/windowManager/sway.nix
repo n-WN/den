@@ -32,17 +32,17 @@
       in
       {
         DP-1 = {
-          mode = "3840x2160";
-          position = "0 0";
-          scale = "3";
-          bg = "${and-justice-for-all} fill";
+          mode = "1920x1080";
+          # position = "0 0";
+          scale = "2";
+          # bg = "${and-justice-for-all} fill";
         };
 
         HDMI-A-1 = {
-          mode = "3840x2160";
+          mode = "1920x1080";
           # position = "1240 0";
-          scale = "3";
-          bg = "${and-justice-for-all} fill";
+          scale = "2";
+          # bg = "${and-justice-for-all} fill";
         };
       };
 

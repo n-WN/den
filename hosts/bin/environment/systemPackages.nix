@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 with pkgs;
 [
-
   nautilus
 
   wget
@@ -13,7 +12,11 @@ with pkgs;
   p7zip
   htop
   bottom
-  surf
+
+  sing-box
+
+  atuin
+  
   screen
   ripgrep
   pinentry
@@ -28,4 +31,6 @@ with pkgs;
   polkit_gnome
   thunderbird
   mpv-handler
+
+  sage
 ]

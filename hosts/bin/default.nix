@@ -43,7 +43,7 @@
   users.users.${username} = {
     isNormalUser = true;
     shell = pkgs.fish;
-    hashedPassword = "$6$jVI2tdENaEqUyZGh$rni.joO5US9t9RYM9wlIvia4L1YOObs44Kt3gBcooBJTeSFGyEorciM2CrKMEnzbojpi1KgPPe256i5Q46N1d0";
+    hashedPassword = "$y$j9T$cI8ZFWS0NPEKvvgL/Fg86/$OFcaAf.GpnGu6vG.WogZzdnIuwigBcPR8ZCJ.vdglyB";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHysCjoqwXAumW+cUCcFZDpC9yLx3Jh7x5du7r21fPE4"
     ];
