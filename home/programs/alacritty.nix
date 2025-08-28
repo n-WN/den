@@ -1,4 +1,8 @@
 {
+  lib,
+  pkgs,
+}:
+{
   enable = true;
   settings = {
     window = {
@@ -10,6 +14,7 @@
       };
     };
 
+    terminal.shell = (lib.getExe pkgs.fish);
     colors = {
       primary = {
         background = "#2b3339";

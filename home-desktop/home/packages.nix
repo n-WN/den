@@ -5,6 +5,10 @@ with pkgs;
   swayidle
   tdesktop
   firefox-wayland
-  animeko
+  # animeko
   vscode-fhs
+  
+  warp-terminal
+
+  _1password-gui
 ]

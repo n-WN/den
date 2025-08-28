@@ -2,8 +2,10 @@
 {
   enable = true;
   theme = {
-    package = pkgs.numix-gtk-theme;
-    name = "Numix";
+    # package = pkgs.numix-gtk-theme;
+    package = pkgs.gnome-themes-extra;
+    # name = "Numix";
+    name = "Adwaita-dark";
   };
   iconTheme = {
     package = pkgs.papirus-icon-theme;

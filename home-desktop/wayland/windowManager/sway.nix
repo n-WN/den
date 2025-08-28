@@ -13,16 +13,17 @@
     startup = [
       { command = "fcitx5 -d"; }
       { command = "firefox"; }
-      { command = "telegram-desktop"; }
-      { command = "thunderbird"; }
+      # { command = "Telegram"; }
+      # { command = "thunderbird"; }
+      { command = "blueman-applet"; }
     ];
 
     bars = [ ];
 
     assigns = {
       "1" = [ { app_id = "firefox"; } ];
-      "4" = [ { app_id = "org.telegram.desktop"; } ];
-      "5" = [ { app_id = "thunderbird"; } ];
+      "3" = [ { app_id = "org.telegram.desktop"; } ];
+      # "5" = [ { app_id = "thunderbird"; } ];
     };
 
     output =
@@ -41,7 +42,7 @@
         HDMI-A-1 = {
           mode = "1920x1080";
           # position = "1240 0";
-          scale = "2";
+          scale = "1.5";
           # bg = "${and-justice-for-all} fill";
         };
       };
