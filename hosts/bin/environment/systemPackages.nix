@@ -11,9 +11,13 @@ with pkgs;
   unzip
   p7zip
   htop
+  btop
   bottom
 
   sing-box
+  mihomo
+
+  sunshine
 
   atuin
   
@@ -32,5 +36,11 @@ with pkgs;
   thunderbird
   mpv-handler
 
+  nix-heuristic-gc
+
+  claude-code
+
+  fplll
+  flatter
   sage
 ]

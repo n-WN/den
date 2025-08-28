@@ -1,11 +1,5 @@
 {
-  # docker = {
-  #   enable = true;
-  #   rootless = {
-  #     enable = true;
-  #     setSocketVariable = true;
-  #   };
-  # };
+  docker.enable = true;
   podman.enable = true;
   libvirtd.enable = true;
 }

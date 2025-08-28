@@ -19,10 +19,14 @@
 
   gnome.sushi.enable = true;
 
+  blueman = {
+    enable = true;
+  };
   pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  vscode-server.enable = true;
 }

@@ -6,4 +6,6 @@ with pkgs;
   gh
   nh
   nixpkgs-review
+
+  _1password-cli
 ]

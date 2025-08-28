@@ -26,7 +26,8 @@ let
         (genConf "general")
         inputs.self.nixosModules.default
         inputs.determinate.nixosModules.default
-      ] ++ modules;
+      ]
+      ++ modules;
       specialArgs = {
         inherit inputs username home;
       };
@@ -41,6 +42,9 @@ mkMerge [
     inputs.minegrub.nixosModules.default
     inputs.disko.nixosModules.disko
     # inputs.niri.nixosModules.niri
-    { nix.registry.self.flake = self; }
+    {
+      nix.registry.self.flake = self;
+    }
+    inputs.vscode-server.nixosModules.default
   ])
 ]
