@@ -19,6 +19,12 @@
       { command = "blueman-applet"; }
     ];
 
+    floating.criteria = [
+      {
+        title = "Feishu Meetings";
+      }
+    ];
+
     bars = [ ];
 
     assigns = {
