@@ -1,5 +1,8 @@
-{ lib, pkgs }:
+{root, lib, pkgs }:
 with pkgs;
+# let
+#  inherit (root.pkgs) warp;
+# in
 [
   wl-clipboard
   swayidle
@@ -11,4 +14,8 @@ with pkgs;
   warp-terminal
 
   _1password-gui
+
+  wechat
+  qq
+  feishu
 ]

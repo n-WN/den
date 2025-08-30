@@ -8,6 +8,8 @@
 
   tailscale.enable = true;
 
+  xwayland-satellite.enable = true;
+
   openssh.enable = true;
   udev.packages = [ pkgs.android-udev-rules ];
 

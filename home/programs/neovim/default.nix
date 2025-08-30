@@ -29,7 +29,7 @@
     impatient-nvim
     nvim-notify
     FixCursorHold-nvim
-    gitsigns-nvim
+    # gitsigns-nvim
     nvim-autopairs
     rainbow-delimiters-nvim
     nvim-ts-autotag
