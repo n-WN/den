@@ -4,12 +4,17 @@
       main = {
         type = "disk";
         device = "/dev/nvme0n1";
+        # Keep Windows dual-boot partitions intact: never wipe the whole disk.
+        destroy = false;
         content = {
           type = "gpt";
           partitions = {
             ESP = {
               priority = 1;
               name = "ESP";
+              label = "ESP";
+              # Use the existing EFI partition directly.
+              device = "/dev/nvme0n1p1";
               start = "1M";
               end = "1G";
               type = "EF00";
@@ -21,8 +26,10 @@
               };
             };
             root = {
-              # Keep partlabel explicit so generated systemd device units are stable.
-              name = "disk-main-root";
+              # Reuse the existing Linux root partition (p2) only.
+              name = "root";
+              label = "root";
+              device = "/dev/nvme0n1p2";
               size = "100%";
               content = {
                 type = "btrfs";
