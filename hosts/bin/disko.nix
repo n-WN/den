@@ -1,6 +1,59 @@
 {
-  # Temporary: do not declare runtime disko layout on this host.
-  # The machine currently boots from ext4 (/dev/nvme0n1p2), and the previous
-  # disko declaration expected /dev/disk/by-partlabel/disk-main-root which
-  # does not exist, causing boot-time device timeout/emergency mode.
+  devices = {
+    disk = {
+      main = {
+        type = "disk";
+        device = "/dev/nvme0n1";
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              priority = 1;
+              name = "ESP";
+              start = "1M";
+              end = "1G";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
+              };
+            };
+            root = {
+              # Keep partlabel explicit so generated systemd device units are stable.
+              name = "disk-main-root";
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+                subvolumes = {
+                  "/rootfs" = {
+                    mountpoint = "/";
+                  };
+                  "/home" = {
+                    mountOptions = [ "compress=zstd" ];
+                    mountpoint = "/home";
+                  };
+                  "/nix" = {
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                    mountpoint = "/nix";
+                  };
+                  "/swap" = {
+                    mountpoint = "/.swapvol";
+                    swap = {
+                      swapfile.size = "2G";
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }
