@@ -19,7 +19,7 @@
   settings = {
     trusted-users = [
       "root"
-      "sign"
+      "nix"
     ];
     substituters = [
       "https://cache.garnix.io"

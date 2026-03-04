@@ -10,7 +10,7 @@
       ...
     }:
     let
-      username = "sign";
+      username = "nix";
       home = {
         default =
           { pkgs, ... }@args:
