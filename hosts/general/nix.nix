@@ -1,4 +1,8 @@
-{ inputs }:
+{
+  inputs,
+  lib,
+  pkgs,
+}:
 {
   registry = {
     nixpkgs.flake = inputs.nixpkgs;
@@ -32,4 +36,13 @@
     nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
     auto-optimise-store = true;
   };
+
+  # determinate module pins nix.package to its own nix-src build.
+  # Prefer nixpkgs binary package here to avoid long source builds and flaky upstream tests.
+  package = lib.mkForce (
+    if pkgs ? nixVersions && pkgs.nixVersions ? stable then
+      pkgs.nixVersions.stable
+    else
+      pkgs.nix
+  );
 }
