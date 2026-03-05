@@ -74,7 +74,7 @@
         "4,monitor:DP-1"
       ];
 
-      windowrulev2 = [
+      windowrule = [
         "workspace 1,class:^(firefox)$"
         "workspace 3,class:^(org.telegram.desktop)$"
         "float,title:^(Feishu Meetings)$"
