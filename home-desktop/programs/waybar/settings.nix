@@ -4,7 +4,10 @@
   lib,
 }:
 let
-  inherit (root.pkgs) player-metadata;
+  inherit (root.pkgs)
+    player-metadata
+    powermenu
+    ;
   brightnessctl = lib.getExe pkgs.brightnessctl;
   desktopPreset = import ../../../lib/desktop-presets.nix { inherit lib; };
   selected = desktopPreset.selected;
@@ -20,16 +23,16 @@ in
     "position" = "top";
     "modules-left" = selected.waybar.modulesLeft;
     "modules-center" = selected.waybar.modulesCenter;
-    "modules-right" = [
-      "tray"
-      "idle_inhibitor"
-      "pulseaudio"
-      "backlight"
-      "cpu"
-      "network"
-      "battery"
-      "clock"
-    ];
+    "modules-right" = selected.waybar.modulesRight;
+    "hyprland/window" = {
+      "max-length" = 72;
+      "separate-outputs" = true;
+      "rewrite" = {
+        "(.*) - Mozilla Firefox" = "$1";
+        "(.*) - Chromium" = "$1";
+        "(.*) - Brave" = "$1";
+      };
+    };
     "hyprland/workspaces" = {
       "disable-scroll" = true;
       "format" = "{icon}";
@@ -55,15 +58,20 @@ in
     "idle_inhibitor" = {
       "format" = "{icon}";
       "format-icons" = {
-        "activated" = "󰈈";
-        "deactivated" = "󰈉";
+        "activated" = "󰥔";
+        "deactivated" = "";
       };
       "tooltip" = false;
     };
     "custom/launcher" = {
-      "format" = "󱄅";
+      "format" = "";
       "tooltip" = false;
       "on-click" = lib.getExe' pkgs.kickoff "kickoff";
+    };
+    "custom/power" = {
+      "format" = "";
+      "tooltip" = false;
+      "on-click" = lib.getExe powermenu;
     };
     "backlight" = {
       "device" = "apple-panel-bl";
@@ -84,9 +92,17 @@ in
     };
     "pulseaudio" = {
       "format" = "{icon} {volume}%";
-      "format-muted" = "󰝟 Muted";
+      "format-muted" = "󰝟";
+      "format-bluetooth" = "{icon} {volume}%";
+      "format-bluetooth-muted" = "󰝟 ";
       "max-volume" = 200;
       "format-icons" = {
+        "headphone" = "";
+        "hands-free" = "";
+        "headset" = "";
+        "phone" = "";
+        "portable" = "";
+        "car" = "";
         "default" = [
           ""
           ""
@@ -102,7 +118,8 @@ in
     };
     "clock" = {
       "interval" = 1;
-      "format" = "{:%H:%M %b %d}";
+      "format" = " {:%H:%M}";
+      "format-alt" = " {:%m-%d %a}";
       "tooltip" = true;
       "today-format" = "<span color='#ff6699'><b>{}</b></span>";
       "tooltip-format" = ''
@@ -129,24 +146,34 @@ in
     };
     "cpu" = {
       "interval" = 1;
-      "format" = "󰘚 {usage}%";
+      "format" = " {usage}%";
+    };
+    "memory" = {
+      "interval" = 2;
+      "format" = "󰍛 {}%";
     };
     "custom/music" = {
-      "format" = "{}";
+      "format" = " {}";
       "interval" = 1;
       "exec-if" = playerctl-has-metadata;
       "exec" = "${player-metadata}";
     };
     "network" = {
-      "interval" = 1;
-      "format-wifi" = "󰖩 {essid}";
+      "interval" = 2;
+      "format-wifi" = " {signalStrength}%";
       "format-ethernet" = "󰈀 {ipaddr}";
-      "format-linked" = "󰖩 {essid}";
-      "format-disconnected" = "󰖩 Disconnected";
-      "tooltip" = false;
+      "format-linked" = "󰈀 {ifname}";
+      "format-disconnected" = "󰖪";
+      "tooltip" = true;
+      "tooltip-format" = ''
+        Network: <b>{ifname}</b>
+        IP: <b>{ipaddr}/{cidr}</b>
+        Gateway: <b>{gwaddr}</b>
+      '';
+      "tooltip-format-disconnected" = "Disconnected";
     };
     "tray" = {
-      "icon-size" = 14;
+      "icon-size" = 16;
       "spacing" = 5;
     };
   }

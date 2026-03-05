@@ -23,7 +23,7 @@ Available presets:
 ## What Each Preset Controls
 
 - `waybar.style` -> CSS file name under `lib/waybar-presets/`
-- `waybar.modulesLeft/modulesCenter` -> visible modules
+- `waybar.modulesLeft/modulesCenter/modulesRight` -> visible modules
 - `desktop.wallpaper` -> wallpaper key resolved in Hyprland config
 - `desktop.startupPage` -> Firefox startup page on login
 - `desktop.activeBorder/inactiveBorder` -> Hyprland border colors

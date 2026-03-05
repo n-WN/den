@@ -17,6 +17,16 @@ let
           "hyprland/window"
           "sway/window"
         ];
+        modulesRight = [
+          "tray"
+          "idle_inhibitor"
+          "pulseaudio"
+          "backlight"
+          "cpu"
+          "network"
+          "battery"
+          "clock"
+        ];
       };
 
       desktop = {
@@ -35,11 +45,21 @@ let
       waybar = {
         style = "aurora";
         modulesLeft = [
-          "hyprland/workspaces"
           "custom/launcher"
+          "hyprland/workspaces"
           "custom/music"
         ];
         modulesCenter = [ "hyprland/window" ];
+        modulesRight = [
+          "idle_inhibitor"
+          "pulseaudio"
+          "network"
+          "cpu"
+          "memory"
+          "clock"
+          "tray"
+          "custom/power"
+        ];
       };
 
       desktop = {

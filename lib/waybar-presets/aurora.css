@@ -45,6 +45,7 @@ window > box {
 }
 
 #custom-launcher,
+#custom-power,
 #custom-music,
 #window,
 #clock,
@@ -66,6 +67,12 @@ window > box {
 
 #custom-launcher {
   color: #89b4fa;
+  font-size: 10.5pt;
+  padding: 0 12px;
+}
+
+#custom-power {
+  color: #f38ba8;
   font-size: 10.5pt;
   padding: 0 12px;
 }
@@ -92,6 +99,10 @@ window > box {
 
 #cpu {
   color: #f38ba8;
+}
+
+#memory {
+  color: #cba6f7;
 }
 
 #backlight {
