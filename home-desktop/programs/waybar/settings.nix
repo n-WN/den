@@ -28,11 +28,11 @@ in
     {
       "layer" = "top";
       "position" = "top";
-      "height" = 36;
+      "height" = 32;
       "spacing" = 0;
       "fixed-center" = true;
       "reload_style_on_change" = true;
-      "margin-top" = 2;
+      "margin-top" = 1;
       "margin-left" = 12;
       "margin-right" = 12;
       "modules-left" = selected.waybar.modulesLeft;
