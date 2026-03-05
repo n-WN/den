@@ -41,7 +41,7 @@ mkMerge [
     inputs.home-manager.nixosModules.home-manager
     inputs.minegrub.nixosModules.default
     inputs.disko.nixosModules.disko
-    # inputs.niri.nixosModules.niri
+    inputs.niri.nixosModules.niri
     {
       nix.registry.self.flake = self;
     }

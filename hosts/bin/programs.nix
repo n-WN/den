@@ -1,4 +1,4 @@
-{ pkgs }:
+{ ... }:
 {
   git.enable = true;
   nm-applet.enable = true;
@@ -8,16 +8,13 @@
 
   steam.enable = true;
 
-  # niri = {
-  #   enable = true;
-  #   package = pkgs.niri-unstable;
-  # };
+  niri.enable = true;
 
   obs-studio = {
     enable = true;
   };
 
-  sway.enable = true;
+  sway.enable = false;
   fish = {
     useBabelfish = true;
     enable = true;
