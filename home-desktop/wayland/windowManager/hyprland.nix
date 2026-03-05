@@ -74,10 +74,10 @@
         "4,monitor:DP-1"
       ];
 
-      windowrulev2 = [
-        "workspace 1,class:^(firefox)$"
-        "workspace 3,class:^(org.telegram.desktop)$"
-        "float,title:^(Feishu Meetings)$"
+      windowrule = [
+        "match:class ^(firefox)$, workspace 1"
+        "match:class ^(org.telegram.desktop)$, workspace 3"
+        "match:title ^(Feishu Meetings)$, float true"
       ];
 
       bind = [
