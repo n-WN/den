@@ -12,7 +12,7 @@
 
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 8pt;
+  font-size: 7pt;
   font-weight: 700;
   border: none;
   min-height: 0;
@@ -37,11 +37,11 @@ tooltip label {
 .modules-left,
 .modules-center,
 .modules-right {
-  margin-top: 1px;
-  padding: 1px 7px;
+  margin-top: 0;
+  padding: 0 6px;
   background: @bg;
   border: 1px solid @border;
-  border-radius: 14px;
+  border-radius: 11px;
 }
 
 .modules-left {
@@ -65,14 +65,14 @@ tooltip label {
 #tray,
 #custom-power {
   margin: 0;
-  padding: 0 6px;
+  padding: 0 5px;
   background: transparent;
 }
 
 #custom-launcher {
   color: @accent;
-  font-size: 9pt;
-  padding-right: 7px;
+  font-size: 8pt;
+  padding-right: 6px;
 }
 
 #custom-launcher:hover {
@@ -86,11 +86,11 @@ tooltip label {
 }
 
 #workspaces button {
-  min-width: 24px;
-  margin: 1px 2px;
-  padding: 0 6px;
+  min-width: 21px;
+  margin: 0 1px;
+  padding: 0 5px;
   color: @muted;
-  border-radius: 9px;
+  border-radius: 7px;
   background: transparent;
   transition: all 0.25s ease;
 }
@@ -105,9 +105,9 @@ tooltip label {
   color: @active-text;
   background: @accent;
   border: 1px solid rgba(186, 230, 253, 0.55);
-  padding-left: 9px;
-  padding-right: 9px;
-  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.16);
+  padding-left: 7px;
+  padding-right: 7px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
 }
 
 #workspaces button.urgent {
@@ -117,12 +117,12 @@ tooltip label {
 
 #custom-music {
   color: @accent-soft;
-  min-width: 136px;
+  min-width: 112px;
 }
 
 #window {
   color: @text;
-  min-width: 240px;
+  min-width: 180px;
 }
 
 #window.empty {
@@ -175,14 +175,14 @@ tooltip label {
 }
 
 #tray {
-  padding-left: 3px;
-  padding-right: 6px;
+  padding-left: 2px;
+  padding-right: 5px;
 }
 
 #custom-power {
   color: @danger;
-  font-size: 9pt;
-  padding-left: 7px;
+  font-size: 8pt;
+  padding-left: 6px;
 }
 
 #custom-power:hover {
