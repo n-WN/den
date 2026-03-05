@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, inputs, ... }:
 {
   git.enable = true;
   nm-applet.enable = true;
@@ -8,7 +8,13 @@
 
   steam.enable = true;
 
-  niri.enable = true;
+  niri = {
+    enable = true;
+    package = (inputs.niri.packages.${pkgs.system}.niri-stable).overrideAttrs (old: {
+      doCheck = false;
+      doInstallCheck = false;
+    });
+  };
 
   obs-studio = {
     enable = true;
