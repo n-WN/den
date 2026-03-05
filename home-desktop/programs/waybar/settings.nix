@@ -28,7 +28,7 @@ in
     {
       "layer" = "top";
       "position" = "top";
-      "height" = 40;
+      "height" = 42;
       "spacing" = 0;
       "fixed-center" = true;
       "reload_style_on_change" = true;
