@@ -16,11 +16,16 @@
     });
   };
 
+  hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   obs-studio = {
     enable = true;
   };
 
-  sway.enable = false;
+  sway.enable = true;
   fish = {
     useBabelfish = true;
     enable = true;
