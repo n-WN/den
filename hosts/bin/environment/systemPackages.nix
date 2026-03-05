@@ -23,13 +23,14 @@ with pkgs;
   
   screen
   ripgrep
-  pinentry
+  pinentry-curses
   unzip
   pamixer
   acpi
   rsync
   aria2
   openssl
+  android-tools
   mpv
   xwinwrap
   polkit_gnome

@@ -6,8 +6,8 @@ with pkgs;
 [
   wl-clipboard
   swayidle
-  tdesktop
-  firefox-wayland
+  telegram-desktop
+  firefox
   # animeko
   vscode-fhs
   

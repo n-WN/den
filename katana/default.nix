@@ -157,13 +157,13 @@
 
     # fontDir.enable = true;
     packages = with pkgs; [
-      vistafonts-chs
+      vista-fonts-chs
       inter
       roboto
       roboto-serif
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       nerd-fonts.jetbrains-mono
     ];
   };

@@ -48,7 +48,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHysCjoqwXAumW+cUCcFZDpC9yLx3Jh7x5du7r21fPE4"
     ];
     extraGroups = [
-      "adbusers"
       "wheel"
       "docker"
       "networkmanager"

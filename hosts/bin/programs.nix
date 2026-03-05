@@ -1,6 +1,5 @@
 { pkgs }:
 {
-  adb.enable = true;
   git.enable = true;
   nm-applet.enable = true;
   dconf.enable = true;
