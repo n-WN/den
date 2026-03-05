@@ -17,6 +17,13 @@
         recorder-toggle
         swaylock
         ;
+      desktopPreset = import ../../../lib/desktop-presets.nix { inherit lib; };
+      selected = desktopPreset.selected;
+      wallpaper =
+        if selected.desktop.wallpaper == "and-justice-for-all" then
+          root.pkgs.wallpapers.metallica.and-justice-for-all
+        else
+          root.pkgs.wallpapers.metallica.default;
       grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
     in
     {
@@ -28,8 +35,9 @@
       ];
 
       exec-once = [
+        "${lib.getExe pkgs.swaybg} -i ${wallpaper} -m fill"
         "fcitx5 -d"
-        "firefox"
+        "firefox --new-window ${selected.desktop.startupPage}"
         "blueman-applet"
       ];
 
@@ -44,8 +52,8 @@
         border_size = 1;
         resize_on_border = true;
         layout = "dwindle";
-        "col.active_border" = "rgb(83b6af)";
-        "col.inactive_border" = "rgb(2b3339)";
+        "col.active_border" = "rgb(${selected.desktop.activeBorder})";
+        "col.inactive_border" = "rgb(${selected.desktop.inactiveBorder})";
       };
 
       decoration = {

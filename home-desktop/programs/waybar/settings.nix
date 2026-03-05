@@ -6,6 +6,8 @@
 let
   inherit (root.pkgs) player-metadata;
   brightnessctl = lib.getExe pkgs.brightnessctl;
+  desktopPreset = import ../../../lib/desktop-presets.nix { inherit lib; };
+  selected = desktopPreset.selected;
   playerctl-has-metadata = lib.getExe (
     pkgs.writeShellScriptBin "playerctl-has-metadata" ''
       ${lib.getExe pkgs.playerctl} metadata >/dev/null 2>&1
@@ -16,15 +18,8 @@ in
   {
     "layer" = "top";
     "position" = "top";
-    "modules-left" = [
-      "hyprland/workspaces"
-      "sway/workspaces"
-      "custom/music"
-    ];
-    "modules-center" = [
-      "hyprland/window"
-      "sway/window"
-    ];
+    "modules-left" = selected.waybar.modulesLeft;
+    "modules-center" = selected.waybar.modulesCenter;
     "modules-right" = [
       "tray"
       "idle_inhibitor"
@@ -64,6 +59,11 @@ in
         "deactivated" = "󰈉";
       };
       "tooltip" = false;
+    };
+    "custom/launcher" = {
+      "format" = "󱄅";
+      "tooltip" = false;
+      "on-click" = lib.getExe' pkgs.kickoff "kickoff";
     };
     "backlight" = {
       "device" = "apple-panel-bl";
