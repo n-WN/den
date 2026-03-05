@@ -8,7 +8,11 @@
 
   tailscale.enable = true;
 
-  xwayland-satellite.enable = true;
+  xwayland-satellite = {
+    enable = true;
+    sessionTarget = "niri.service";
+    display = ":0";
+  };
 
   openssh.enable = true;
 

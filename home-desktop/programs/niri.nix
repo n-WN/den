@@ -39,7 +39,6 @@
       { command = [ "fcitx5" "-d" ]; }
       { command = [ "firefox" ]; }
       { command = [ "blueman-applet" ]; }
-      { command = [ (lib.getExe pkgs.xwayland-satellite) ]; }
     ];
 
     workspaces = lib.genAttrs (map toString (lib.range 1 4)) (_: {
