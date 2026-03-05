@@ -5,6 +5,6 @@ let
 in
 {
   enable = true;
-  style = builtins.readFile "${./presets}/${selected.waybar.style}.css";
+  style = builtins.readFile (../../../lib/waybar-presets + "/${selected.waybar.style}.css");
   systemd.enable = true;
 }

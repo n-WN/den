@@ -22,7 +22,7 @@ Available presets:
 
 ## What Each Preset Controls
 
-- `waybar.style` -> CSS file name under `home-desktop/programs/waybar/presets/`
+- `waybar.style` -> CSS file name under `lib/waybar-presets/`
 - `waybar.modulesLeft/modulesCenter` -> visible modules
 - `desktop.wallpaper` -> wallpaper key resolved in Hyprland config
 - `desktop.startupPage` -> Firefox startup page on login
@@ -32,6 +32,6 @@ Available presets:
 
 The original bar theme is archived at:
 
-- `home-desktop/programs/waybar/presets/legacy.css`
+- `lib/waybar-presets/legacy.css`
 
 So rollback is always one-line (`activePreset = "legacy"`).
