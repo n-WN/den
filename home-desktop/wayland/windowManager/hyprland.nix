@@ -74,7 +74,7 @@
         "4,monitor:DP-1"
       ];
 
-      windowrule = [
+      windowrulev2 = [
         "workspace 1,class:^(firefox)$"
         "workspace 3,class:^(org.telegram.desktop)$"
         "float,title:^(Feishu Meetings)$"
@@ -106,6 +106,7 @@
         "$mod SHIFT, S, exec, ${grimshot} copy area"
         "$mod SHIFT, R, exec, ${lib.getExe recorder-toggle}"
         "$mod, apostrophe, exec, ${lib.getExe swaylock}"
+        "$mod SHIFT, X, exit"
       ]
       ++ (
         builtins.concatLists (

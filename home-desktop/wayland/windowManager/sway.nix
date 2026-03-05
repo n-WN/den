@@ -78,6 +78,7 @@
         "${modifier}+Shift+space" = null;
         "${modifier}+Shift+s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
         "${modifier}+Shift+r" = "exec ${lib.getExe recorder-toggle}";
+        "${modifier}+Shift+x" = "exit";
       };
     colors = {
       focused = {

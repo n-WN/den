@@ -6,6 +6,11 @@
 let
   inherit (root.pkgs) player-metadata;
   brightnessctl = lib.getExe pkgs.brightnessctl;
+  playerctl-has-metadata = lib.getExe (
+    pkgs.writeShellScriptBin "playerctl-has-metadata" ''
+      ${lib.getExe pkgs.playerctl} metadata >/dev/null 2>&1
+    ''
+  );
 in
 [
   {
@@ -129,7 +134,7 @@ in
     "custom/music" = {
       "format" = "{}";
       "interval" = 1;
-      "exec-if" = "${lib.getExe pkgs.playerctl} metadata";
+      "exec-if" = playerctl-has-metadata;
       "exec" = "${player-metadata}";
     };
     "network" = {
