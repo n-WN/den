@@ -4,7 +4,7 @@
   nm-applet.enable = true;
   dconf.enable = true;
 
-  ssh.startAgent = true;
+  ssh.startAgent = false;
 
   steam.enable = true;
 
