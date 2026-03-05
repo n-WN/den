@@ -8,6 +8,12 @@ let
 
       waybar = {
         style = "legacy";
+        workspaceIcons = {
+          "1" = ''<span color="#FF7139"></span>'';
+          "2" = ''<span color="#757575"></span>'';
+          "3" = ''<span color="#26A5E4"></span>'';
+          "4" = ''<span color="#0A84FF"></span>'';
+        };
         modulesLeft = [
           "hyprland/workspaces"
           "sway/workspaces"
@@ -44,6 +50,14 @@ let
 
       waybar = {
         style = "aurora";
+        workspaceIcons = {
+          "1" = "";
+          "2" = "";
+          "3" = "";
+          "4" = "";
+          "5" = "";
+          "default" = "";
+        };
         modulesLeft = [
           "custom/launcher"
           "hyprland/workspaces"
@@ -51,11 +65,12 @@ let
         ];
         modulesCenter = [ "hyprland/window" ];
         modulesRight = [
-          "idle_inhibitor"
-          "pulseaudio"
+          "bluetooth"
           "network"
+          "pulseaudio"
           "cpu"
           "memory"
+          "idle_inhibitor"
           "clock"
           "tray"
           "custom/power"

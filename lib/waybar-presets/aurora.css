@@ -1,125 +1,189 @@
+@define-color bg rgba(15, 23, 42, 0.76);
+@define-color bg-strong rgba(15, 23, 42, 0.9);
+@define-color panel rgba(30, 41, 59, 0.9);
+@define-color border rgba(148, 163, 184, 0.22);
+@define-color text #e5eefb;
+@define-color muted #94a3b8;
+@define-color accent #7dd3fc;
+@define-color accent-soft #86efac;
+@define-color warn #fbbf24;
+@define-color danger #fb7185;
+@define-color active-text #0f172a;
+
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 9pt;
+  font-size: 10pt;
   font-weight: 700;
   border: none;
-  border-radius: 10px;
   min-height: 0;
 }
 
 window#waybar {
   background: transparent;
-  color: #cdd6f4;
+  color: @text;
 }
 
-window > box {
-  margin: 8px 12px 0 12px;
-  padding: 4px 8px;
-  background: rgba(17, 17, 27, 0.72);
-  border: 1px solid rgba(137, 180, 250, 0.28);
-  border-radius: 14px;
-}
-
-#workspaces {
-  background: rgba(49, 50, 68, 0.7);
+tooltip {
+  background: @bg-strong;
+  color: @text;
+  border: 1px solid @border;
   border-radius: 12px;
-  padding: 0 4px;
 }
 
-#workspaces button {
-  color: #a6adc8;
-  padding: 0 7px;
-  margin: 2px 2px;
-  min-width: 28px;
+tooltip label {
+  color: @text;
 }
 
-#workspaces button.active,
-#workspaces button.focused {
-  background: #89b4fa;
-  color: #11111b;
+.modules-left,
+.modules-center,
+.modules-right {
+  margin-top: 8px;
+  padding: 4px 10px;
+  background: @bg;
+  border: 1px solid @border;
+  border-radius: 18px;
 }
 
-#workspaces button.urgent {
-  background: #f38ba8;
-  color: #11111b;
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
 }
 
 #custom-launcher,
-#custom-power,
 #custom-music,
 #window,
-#clock,
+#bluetooth,
 #network,
 #pulseaudio,
 #cpu,
 #memory,
-#temperature,
-#battery,
 #idle_inhibitor,
+#clock,
 #tray,
-#backlight {
-  margin: 2px 4px;
-  padding: 0 10px;
-  background: rgba(49, 50, 68, 0.66);
-  color: #cdd6f4;
-  border-radius: 10px;
+#custom-power {
+  margin: 0;
+  padding: 0 8px;
+  background: transparent;
 }
 
 #custom-launcher {
-  color: #89b4fa;
-  font-size: 10.5pt;
-  padding: 0 12px;
+  color: @accent;
+  font-size: 11pt;
+  padding-right: 10px;
 }
 
-#custom-power {
-  color: #f38ba8;
-  font-size: 10.5pt;
-  padding: 0 12px;
+#custom-launcher:hover {
+  color: @accent-soft;
+}
+
+#workspaces {
+  margin: 0 6px;
+  padding: 0;
+  background: transparent;
+}
+
+#workspaces button {
+  min-width: 30px;
+  margin: 2px 3px;
+  padding: 0 8px;
+  color: @muted;
+  border-radius: 12px;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+#workspaces button:hover {
+  color: @text;
+  background: rgba(125, 211, 252, 0.12);
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  color: @active-text;
+  background-image: linear-gradient(45deg, @accent, @accent-soft);
+  padding-left: 14px;
+  padding-right: 14px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.18);
+}
+
+#workspaces button.urgent {
+  color: @active-text;
+  background: @danger;
 }
 
 #custom-music {
-  color: #a6e3a1;
+  color: @accent-soft;
+  min-width: 180px;
 }
 
 #window {
-  color: #94e2d5;
+  color: @text;
+  min-width: 340px;
 }
 
-#clock {
-  color: #f9e2af;
+#window.empty {
+  color: @muted;
+}
+
+#bluetooth {
+  color: #c4b5fd;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+  color: @muted;
 }
 
 #network {
-  color: #b4befe;
+  color: @accent;
+}
+
+#network.disconnected {
+  color: @muted;
 }
 
 #pulseaudio {
-  color: #fab387;
+  color: #fdba74;
+}
+
+#pulseaudio.muted {
+  color: @muted;
 }
 
 #cpu {
-  color: #f38ba8;
+  color: #fda4af;
 }
 
 #memory {
-  color: #cba6f7;
+  color: #93c5fd;
 }
 
-#backlight {
-  color: #89dceb;
-}
-
-#battery {
-  color: #a6e3a1;
+#idle_inhibitor {
+  color: @muted;
 }
 
 #idle_inhibitor.activated {
-  color: #f38ba8;
+  color: @accent-soft;
 }
 
-tooltip {
-  background: #1e1e2e;
-  color: #cdd6f4;
-  border: 1px solid #89b4fa;
-  border-radius: 10px;
+#clock {
+  color: @warn;
+}
+
+#tray {
+  padding-left: 6px;
+  padding-right: 10px;
+}
+
+#custom-power {
+  color: @danger;
+  font-size: 11pt;
+  padding-left: 10px;
+}
+
+#custom-power:hover {
+  color: #fecdd3;
 }

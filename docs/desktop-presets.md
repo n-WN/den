@@ -23,6 +23,7 @@ Available presets:
 ## What Each Preset Controls
 
 - `waybar.style` -> CSS file name under `lib/waybar-presets/`
+- `waybar.workspaceIcons` -> workspace icon map for Hyprland/Sway bars
 - `waybar.modulesLeft/modulesCenter/modulesRight` -> visible modules
 - `desktop.wallpaper` -> wallpaper key resolved in Hyprland config
 - `desktop.startupPage` -> Firefox startup page on login

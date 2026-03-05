@@ -5,17 +5,19 @@ then adapts them to the local Nix/Home-Manager config.
 
 ## Sources
 
-- ML4W dotfiles: module layout and practical icon conventions
-  - https://github.com/mylinuxforwork/dotfiles
-- Hyprdots: icon semantics for power, network, audio, and utility modules
+- Hyprdots: grouped module layout, stronger workspace active state, compact utility icons
   - https://github.com/prasanthrangan/hyprdots
-- Catppuccin Waybar: consistent palette approach
-  - https://github.com/catppuccin/waybar
+- JaKooLit Hyprland Dots: modular top bar compositions, bright activation treatment
+  - https://github.com/JaKooLit/Hyprland-Dots
+- XNM1 NixOS Hyprland config: clean split-container bar layout and Bluetooth/network semantics
+  - https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles
+- gvolpe nix-config: restrained workspace icon mapping and low-noise Hyprland bar composition
+  - https://github.com/gvolpe/nix-config
 
 ## Adapted Patterns
 
-- Kept launcher/workspaces/window on the left/center to maintain strong focus flow.
-- Switched to semantic icons for audio/network/power (easy visual scan).
-- Added memory module to pair with CPU for balanced resource visibility.
-- Added explicit power module (``) for direct shutdown menu access.
-- Kept old style archived as `legacy` preset for one-line rollback.
+- `aurora` keeps a three-zone bar with left focus flow, centered window title, and a compact status cluster on the right.
+- Workspace buttons now rely on CSS-driven active styling instead of hardcoded per-icon colors, so the focused workspace reads immediately.
+- Right-side status uses quieter iconography with tooltips carrying the verbose details.
+- Bluetooth was added because it is a common Hyprland community status module and the host already enables Bluetooth.
+- The original bar remains archived as `legacy` for a one-line rollback.
