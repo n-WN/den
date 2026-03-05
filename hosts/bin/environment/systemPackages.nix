@@ -43,5 +43,7 @@ with pkgs;
 
   fplll
   flatter
-  sage
+  # Upstream 10.8 exists, but nixpkgs currently ships 10.7 and
+  # requireSageTests=true can fail on this machine; keep sage usable for now.
+  (sage.override { requireSageTests = false; })
 ]
