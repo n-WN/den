@@ -12,10 +12,10 @@ in
     "layer" = "top";
     "position" = "top";
     "modules-left" = [
-      "sway/workspaces"
+      "niri/workspaces"
       "custom/music"
     ];
-    "modules-center" = [ "sway/window" ];
+    "modules-center" = [ "niri/window" ];
     "modules-right" = [
       "tray"
       "idle_inhibitor"
@@ -26,10 +26,9 @@ in
       "battery"
       "clock"
     ];
-    "sway/workspaces" = {
+    "niri/workspaces" = {
       "disable-scroll" = true;
       "format" = "{icon}";
-      "all-outputs" = true;
       "format-icons" = {
         "1" = ''<span color="#FF7139"></span>'';
         "2" = ''<span color="#757575"></span>'';
