@@ -28,7 +28,7 @@ in
     {
       "layer" = "top";
       "position" = "top";
-      "height" = 28;
+      "height" = 24;
       "spacing" = 0;
       "fixed-center" = true;
       "reload_style_on_change" = true;
@@ -230,8 +230,8 @@ in
     }
     // lib.optionalAttrs (hasModule "tray") {
       "tray" = {
-        "icon-size" = 16;
-        "spacing" = 5;
+        "icon-size" = 10;
+        "spacing" = 2;
       };
     }
   )

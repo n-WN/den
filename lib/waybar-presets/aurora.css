@@ -50,6 +50,8 @@ tooltip label {
 
 .modules-right {
   margin-right: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #custom-launcher,
@@ -175,8 +177,14 @@ tooltip label {
 }
 
 #tray {
-  padding-left: 2px;
-  padding-right: 5px;
+  padding-left: 1px;
+  padding-right: 4px;
+}
+
+#tray > .active,
+#tray > .passive {
+  margin: 0;
+  padding: 0;
 }
 
 #custom-power {
