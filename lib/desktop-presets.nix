@@ -16,13 +16,9 @@ let
         };
         modulesLeft = [
           "hyprland/workspaces"
-          "sway/workspaces"
           "custom/music"
         ];
-        modulesCenter = [
-          "hyprland/window"
-          "sway/window"
-        ];
+        modulesCenter = [ "hyprland/window" ];
         modulesRight = [
           "tray"
           "idle_inhibitor"
@@ -87,7 +83,7 @@ let
   };
 
   # Single switch for status bar + desktop main page.
-  activePreset = "aurora";
+  activePreset = "legacy";
 
   selected = presets.${activePreset};
 in

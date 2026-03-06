@@ -11,6 +11,7 @@ let
   brightnessctl = lib.getExe pkgs.brightnessctl;
   desktopPreset = import ../../../lib/desktop-presets.nix { inherit lib; };
   selected = desktopPreset.selected;
+  isLegacy = selected.name == "legacy";
   selectedModules = lib.unique (
     selected.waybar.modulesLeft
     ++ selected.waybar.modulesCenter
@@ -28,16 +29,18 @@ in
     {
       "layer" = "top";
       "position" = "top";
-      "height" = 24;
-      "spacing" = 0;
-      "fixed-center" = true;
       "reload_style_on_change" = true;
-      "margin-top" = 0;
-      "margin-left" = 12;
-      "margin-right" = 12;
       "modules-left" = selected.waybar.modulesLeft;
       "modules-center" = selected.waybar.modulesCenter;
       "modules-right" = selected.waybar.modulesRight;
+    }
+    // lib.optionalAttrs (!isLegacy) {
+      "height" = 24;
+      "spacing" = 0;
+      "fixed-center" = true;
+      "margin-top" = 0;
+      "margin-left" = 12;
+      "margin-right" = 12;
     }
     // lib.optionalAttrs (hasModule "hyprland/window") {
       "hyprland/window" = {
@@ -70,8 +73,8 @@ in
       "idle_inhibitor" = {
         "format" = "{icon}";
         "format-icons" = {
-          "activated" = "󰥔";
-          "deactivated" = "";
+          "activated" = if isLegacy then "󰈈" else "󰥔";
+          "deactivated" = if isLegacy then "󰈉" else "";
         };
         "tooltip" = false;
       };
@@ -123,38 +126,50 @@ in
       };
     }
     // lib.optionalAttrs (hasModule "pulseaudio") {
-      "pulseaudio" = {
+      {
         "format" = "{icon} {volume}%";
-        "format-muted" = "󰝟";
-        "format-bluetooth" = "{icon} {volume}%";
-        "format-bluetooth-muted" = "󰝟 ";
+        "format-muted" = if isLegacy then "󰝟 Muted" else "󰝟";
         "max-volume" = 200;
-        "format-icons" = {
-          "headphone" = "";
-          "hands-free" = "";
-          "headset" = "";
-          "phone" = "";
-          "portable" = "";
-          "car" = "";
-          "default" = [
-            ""
-            ""
-            ""
-          ];
-        };
+        "format-icons" =
+          if isLegacy then
+            {
+              "default" = [
+                ""
+                ""
+                ""
+              ];
+            }
+          else
+            {
+              "headphone" = "";
+              "hands-free" = "";
+              "headset" = "";
+              "phone" = "";
+              "portable" = "";
+              "car" = "";
+              "default" = [
+                ""
+                ""
+                ""
+              ];
+            };
         "states" = {
           "warning" = 85;
         };
         "scroll-step" = 1;
         "on-click" = lib.getExe pkgs.pwvucontrol;
         "tooltip" = false;
+      }
+      // lib.optionalAttrs (!isLegacy) {
+        "format-bluetooth" = "{icon} {volume}%";
+        "format-bluetooth-muted" = "󰝟 ";
       };
     }
     // lib.optionalAttrs (hasModule "clock") {
       "clock" = {
         "interval" = 1;
-        "format" = " {:%H:%M}";
-        "format-alt" = " {:%m-%d %a}";
+        "format" = if isLegacy then "{:%H:%M %b %d}" else " {:%H:%M}";
+        "format-alt" = if isLegacy then " {:%H:%M}" else " {:%m-%d %a}";
         "tooltip" = true;
         "today-format" = "<span color='#ff6699'><b>{}</b></span>";
         "tooltip-format" = ''
@@ -184,8 +199,8 @@ in
     }
     // lib.optionalAttrs (hasModule "cpu") {
       "cpu" = {
-        "interval" = 2;
-        "format" = " {usage}%";
+        "interval" = if isLegacy then 1 else 2;
+        "format" = if isLegacy then "󰘚 {usage}%" else " {usage}%";
       };
     }
     // lib.optionalAttrs (hasModule "memory") {
@@ -196,42 +211,54 @@ in
     }
     // lib.optionalAttrs (hasModule "custom/music") {
       "custom/music" = {
-        "format" = " {}";
+        "format" = if isLegacy then "{}" else " {}";
         "interval" = 1;
         "max-length" = 38;
         "exec-if" = playerctl-has-metadata;
         "exec" = "${player-metadata}";
+      }
+      // lib.optionalAttrs (!isLegacy) {
         "on-click" = "${lib.getExe pkgs.playerctl} play-pause";
         "on-click-right" = "${lib.getExe pkgs.playerctl} next";
       };
     }
     // lib.optionalAttrs (hasModule "network") {
-      "network" = {
-        "interval" = 2;
-        "format-wifi" = "{icon} {signalStrength}%";
-        "format-icons" = [
-          "󰤯"
-          "󰤟"
-          "󰤢"
-          "󰤥"
-          "󰤨"
-        ];
-        "format-ethernet" = "󰈀";
-        "format-linked" = "󰈀";
-        "format-disconnected" = "󰖪";
-        "tooltip" = true;
-        "tooltip-format" = ''
-          Network: <b>{ifname}</b>
-          IP: <b>{ipaddr}/{cidr}</b>
-          Gateway: <b>{gwaddr}</b>
-        '';
-        "tooltip-format-disconnected" = "Disconnected";
-      };
+      if isLegacy then
+        {
+          "interval" = 1;
+          "format-wifi" = "󰖩 {essid}";
+          "format-ethernet" = "󰈀 {ipaddr}";
+          "format-linked" = "󰖩 {essid}";
+          "format-disconnected" = "󰖩 Disconnected";
+          "tooltip" = false;
+        }
+      else
+        {
+          "interval" = 2;
+          "format-wifi" = "{icon} {signalStrength}%";
+          "format-icons" = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+          "format-ethernet" = "󰈀";
+          "format-linked" = "󰈀";
+          "format-disconnected" = "󰖪";
+          "tooltip" = true;
+          "tooltip-format" = ''
+            Network: <b>{ifname}</b>
+            IP: <b>{ipaddr}/{cidr}</b>
+            Gateway: <b>{gwaddr}</b>
+          '';
+          "tooltip-format-disconnected" = "Disconnected";
+        };
     }
     // lib.optionalAttrs (hasModule "tray") {
       "tray" = {
-        "icon-size" = 11;
-        "spacing" = 2;
+        "icon-size" = if isLegacy then 14 else 11;
+        "spacing" = if isLegacy then 5 else 2;
       };
     }
   )
