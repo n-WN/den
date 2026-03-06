@@ -1,7 +1,18 @@
-{ username, pkgs }:
+{ pkgs }:
 {
   pcscd.enable = true;
-  getty.autologinUser = username;
+  xserver.enable = true;
+
+  displayManager = {
+    defaultSession = "plasma";
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+  };
+
+  desktopManager.plasma6.enable = true;
+
   devmon.enable = true;
   printing.enable = true;
   printing.drivers = [ pkgs.hplip ];
