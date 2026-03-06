@@ -12,7 +12,7 @@
 
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 7pt;
+  font-size: 8pt;
   font-weight: 700;
   border: none;
   min-height: 0;
@@ -67,13 +67,13 @@ tooltip label {
 #tray,
 #custom-power {
   margin: 0;
-  padding: 0 5px;
+  padding: 0 6px;
   background: transparent;
 }
 
 #custom-launcher {
   color: @accent;
-  font-size: 8pt;
+  font-size: 9pt;
   padding-right: 6px;
 }
 
@@ -88,9 +88,9 @@ tooltip label {
 }
 
 #workspaces button {
-  min-width: 21px;
+  min-width: 22px;
   margin: 0 1px;
-  padding: 0 5px;
+  padding: 0 6px;
   color: @muted;
   border-radius: 7px;
   background: transparent;
@@ -107,8 +107,8 @@ tooltip label {
   color: @active-text;
   background: @accent;
   border: 1px solid rgba(186, 230, 253, 0.55);
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
 }
 
@@ -119,12 +119,12 @@ tooltip label {
 
 #custom-music {
   color: @accent-soft;
-  min-width: 112px;
+  min-width: 120px;
 }
 
 #window {
   color: @text;
-  min-width: 180px;
+  min-width: 210px;
 }
 
 #window.empty {
@@ -177,8 +177,8 @@ tooltip label {
 }
 
 #tray {
-  padding-left: 1px;
-  padding-right: 4px;
+  padding-left: 2px;
+  padding-right: 5px;
 }
 
 #tray > .active,
@@ -189,7 +189,7 @@ tooltip label {
 
 #custom-power {
   color: @danger;
-  font-size: 8pt;
+  font-size: 9pt;
   padding-left: 6px;
 }
 

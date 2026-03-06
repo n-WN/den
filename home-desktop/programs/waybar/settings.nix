@@ -230,7 +230,7 @@ in
     }
     // lib.optionalAttrs (hasModule "tray") {
       "tray" = {
-        "icon-size" = 10;
+        "icon-size" = 11;
         "spacing" = 2;
       };
     }
