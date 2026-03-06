@@ -126,44 +126,45 @@ in
       };
     }
     // lib.optionalAttrs (hasModule "pulseaudio") {
-      {
-        "format" = "{icon} {volume}%";
-        "format-muted" = if isLegacy then "󰝟 Muted" else "󰝟";
-        "max-volume" = 200;
-        "format-icons" =
-          if isLegacy then
-            {
-              "default" = [
-                ""
-                ""
-                ""
-              ];
-            }
-          else
-            {
-              "headphone" = "";
-              "hands-free" = "";
-              "headset" = "";
-              "phone" = "";
-              "portable" = "";
-              "car" = "";
-              "default" = [
-                ""
-                ""
-                ""
-              ];
-            };
-        "states" = {
-          "warning" = 85;
+      "pulseaudio" =
+        {
+          "format" = "{icon} {volume}%";
+          "format-muted" = if isLegacy then "󰝟 Muted" else "󰝟";
+          "max-volume" = 200;
+          "format-icons" =
+            if isLegacy then
+              {
+                "default" = [
+                  ""
+                  ""
+                  ""
+                ];
+              }
+            else
+              {
+                "headphone" = "";
+                "hands-free" = "";
+                "headset" = "";
+                "phone" = "";
+                "portable" = "";
+                "car" = "";
+                "default" = [
+                  ""
+                  ""
+                  ""
+                ];
+              };
+          "states" = {
+            "warning" = 85;
+          };
+          "scroll-step" = 1;
+          "on-click" = lib.getExe pkgs.pwvucontrol;
+          "tooltip" = false;
+        }
+        // lib.optionalAttrs (!isLegacy) {
+          "format-bluetooth" = "{icon} {volume}%";
+          "format-bluetooth-muted" = "󰝟 ";
         };
-        "scroll-step" = 1;
-        "on-click" = lib.getExe pkgs.pwvucontrol;
-        "tooltip" = false;
-      }
-      // lib.optionalAttrs (!isLegacy) {
-        "format-bluetooth" = "{icon} {volume}%";
-        "format-bluetooth-muted" = "󰝟 ";
-      };
     }
     // lib.optionalAttrs (hasModule "clock") {
       "clock" = {
@@ -223,37 +224,38 @@ in
       };
     }
     // lib.optionalAttrs (hasModule "network") {
-      if isLegacy then
-        {
-          "interval" = 1;
-          "format-wifi" = "󰖩 {essid}";
-          "format-ethernet" = "󰈀 {ipaddr}";
-          "format-linked" = "󰖩 {essid}";
-          "format-disconnected" = "󰖩 Disconnected";
-          "tooltip" = false;
-        }
-      else
-        {
-          "interval" = 2;
-          "format-wifi" = "{icon} {signalStrength}%";
-          "format-icons" = [
-            "󰤯"
-            "󰤟"
-            "󰤢"
-            "󰤥"
-            "󰤨"
-          ];
-          "format-ethernet" = "󰈀";
-          "format-linked" = "󰈀";
-          "format-disconnected" = "󰖪";
-          "tooltip" = true;
-          "tooltip-format" = ''
-            Network: <b>{ifname}</b>
-            IP: <b>{ipaddr}/{cidr}</b>
-            Gateway: <b>{gwaddr}</b>
-          '';
-          "tooltip-format-disconnected" = "Disconnected";
-        };
+      "network" =
+        if isLegacy then
+          {
+            "interval" = 1;
+            "format-wifi" = "󰖩 {essid}";
+            "format-ethernet" = "󰈀 {ipaddr}";
+            "format-linked" = "󰖩 {essid}";
+            "format-disconnected" = "󰖩 Disconnected";
+            "tooltip" = false;
+          }
+        else
+          {
+            "interval" = 2;
+            "format-wifi" = "{icon} {signalStrength}%";
+            "format-icons" = [
+              "󰤯"
+              "󰤟"
+              "󰤢"
+              "󰤥"
+              "󰤨"
+            ];
+            "format-ethernet" = "󰈀";
+            "format-linked" = "󰈀";
+            "format-disconnected" = "󰖪";
+            "tooltip" = true;
+            "tooltip-format" = ''
+              Network: <b>{ifname}</b>
+              IP: <b>{ipaddr}/{cidr}</b>
+              Gateway: <b>{gwaddr}</b>
+            '';
+            "tooltip-format-disconnected" = "Disconnected";
+          };
     }
     // lib.optionalAttrs (hasModule "tray") {
       "tray" = {
